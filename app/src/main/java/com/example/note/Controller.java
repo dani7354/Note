@@ -1,5 +1,7 @@
 package com.example.note;
 
+import java.util.ArrayList;
+
 /**
  * Created by dsp on 03/03/2018.
  */
@@ -21,18 +23,24 @@ public class Controller {
 
     private Controller(){
         noteRepository = new NoteRepo();
+
+
     }
 
     public void CreateNote(String noteString){
 
 
-        CurrentNote = new Note(noteRepository.getNoteListCount()-1, noteString);
+        CurrentNote = new Note(noteRepository.getNoteListCount(), noteString);
 
         noteRepository.addNote(CurrentNote);
     }
 
     public int GetRepoSize(){
         return noteRepository.getNoteListCount();
+    }
+
+    public ArrayList<Note> getNoteRepoList(){
+        return noteRepository.getNoteList();
     }
 
 

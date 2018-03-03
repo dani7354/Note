@@ -18,6 +18,10 @@ public class NoteRepo {
         return noteList.size();
     }
 
+    public ArrayList<Note> getNoteList(){
+        return noteList;
+    }
+
 
     public void addNote(Note note){
         noteList.add(note);

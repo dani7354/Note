@@ -7,10 +7,17 @@
 
     <ListView
         android:id="@+id/note_listview"
-
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        
+        tools:context=".MainActivity"
  />
+
+    <TextView
+        android:id="@+id/note_textView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+
 </android.support.constraint.ConstraintLayout>
