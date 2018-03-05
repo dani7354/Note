@@ -24,6 +24,10 @@ public class Controller {
     private Controller(){
         noteRepository = new NoteRepo();
 
+        //For test purposes
+        CreateNote("Note 1 ");
+        CreateNote("Note 2");
+        CreateNote("Note 3");
 
     }
 
@@ -35,6 +39,15 @@ public class Controller {
         noteRepository.addNote(CurrentNote);
     }
 
+    public void removeNote(){
+        noteRepository.deleteNote(CurrentNote);
+        CurrentNote = null;
+    }
+
+    public void updateNote(String updatedText){
+        CurrentNote.setText(updatedText);
+    }
+
     public int GetRepoSize(){
         return noteRepository.getNoteListCount();
     }
@@ -42,11 +55,6 @@ public class Controller {
     public ArrayList<Note> getNoteRepoList(){
         return noteRepository.getNoteList();
     }
-
-
-
-
-
-
+    
 
 }

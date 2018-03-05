@@ -2,6 +2,7 @@ package com.example.note;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.EmptyStackException;
 
 /**
  * Created by dsp on 03/03/2018.
@@ -23,10 +24,18 @@ public class Note {
        id = pId;
        text = pText;
 
-       //set dateTime
+
+       updateDateAndTime();
+
+
+
+    }
+
+    private void updateDateAndTime(){
         Date dateAndTime = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         dateTime = dateFormat.format(dateAndTime);
+
     }
 
     public int getId() {
@@ -37,7 +46,9 @@ public class Note {
         return text;
     }
     public void setText(String text) {
+
         this.text = text;
+        updateDateAndTime();
     }
 
     public String getDateTime() {
@@ -47,6 +58,16 @@ public class Note {
 
     @Override
     public String toString() {
-        return id +": " +  text + " Date: " + dateTime;
+        String returnString = dateTime + ": ";
+
+        if(text.length() <= 12) returnString+=text;
+        else returnString += text.substring(0, 8) + "...";
+
+
+
+        return returnString;
+
+
     }
+
 }

@@ -10,6 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
+
         tools:context=".MainActivity"
  />
 
@@ -17,7 +18,14 @@
         android:id="@+id/note_textView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center_vertical"
+        android:paddingLeft="6dip"
+        android:minHeight="?android:attr/listPreferredItemHeight"
+            />
+
+
+
+
 
 </android.support.constraint.ConstraintLayout>

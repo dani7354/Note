@@ -27,6 +27,10 @@ public class NoteRepo {
         noteList.add(note);
     }
 
+    public void deleteNote(Note note){
+        noteList.remove(note);
+    }
+
 
 
 }
