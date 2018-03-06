@@ -39,6 +39,12 @@ public class Controller {
         noteRepository.addNote(CurrentNote);
     }
 
+    public void createNote(){
+        CurrentNote = new Note(noteRepository.getNoteListCount(), "");
+        noteRepository.addNote(CurrentNote);
+
+    }
+
     public void removeNote(){
         noteRepository.deleteNote(CurrentNote);
         CurrentNote = null;
