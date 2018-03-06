@@ -10,7 +10,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
-
         tools:context=".MainActivity"
  />
 
@@ -22,10 +21,6 @@
         android:gravity="center_vertical"
         android:paddingLeft="6dip"
         android:minHeight="?android:attr/listPreferredItemHeight"
-        android:onClick="viewNote"
-        android:longClickable="true"
-
-
             />
 
 

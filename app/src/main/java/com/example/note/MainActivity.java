@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapter= new ArrayAdapter<Note>(this, R.layout.notelist, R.id.note_textView, controller.getNoteRepoList());
         noteListView.setAdapter(arrayAdapter);
 
+
         noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // Item long click
+        // Item long click to opn dialog for deletion
       noteListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener(){
            @Override
            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
@@ -61,11 +62,14 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapter.notifyDataSetChanged();
     }
 
+    //Opens a new activity which shows a note.
     public void viewNote(View v){
         Intent intent = new Intent(v.getContext(), NoteActivity.class);
         startActivity(intent);
     }
 
+
+    // Dialog window for deleting a note
     public void showConfirmDeleteDialog(){
         AlertDialog.Builder confirmDelete = new AlertDialog.Builder(this);
         confirmDelete.setMessage("Do you really want to delete this note?");
