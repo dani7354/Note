@@ -63,8 +63,6 @@ public class Note {
         if(text.length() <= 12) returnString+=text;
         else returnString += text.substring(0, 8) + "...";
 
-
-
         return returnString;
 
 

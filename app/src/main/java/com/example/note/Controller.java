@@ -25,7 +25,7 @@ public class Controller {
         noteRepository = new NoteRepo();
 
         //For test purposes
-        CreateNote("Note 1 ");
+        CreateNote("Note 1");
         CreateNote("Note 2");
         CreateNote("Note 3");
 
