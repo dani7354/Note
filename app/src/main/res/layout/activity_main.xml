@@ -20,8 +20,9 @@ tools:context="com.example.note.MainActivity">
         android:layout_marginRight="25dp"
         android:layout_marginEnd="25dp"
         android:onClick="createNote"
-        app:backgroundTint="@android:color/holo_red_dark"
         android:src="@drawable/ic_add_white_36dp"
+        app:backgroundTint="@android:color/holo_red_dark"
+
         />
 
 </android.support.design.widget.CoordinatorLayout>
