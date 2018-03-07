@@ -11,12 +11,17 @@ tools:context="com.example.note.MainActivity">
 
 <include layout="@layout/content_main" />
 
-<android.support.design.widget.FloatingActionButton
-    android:id="@+id/fab_create"
-    android:onClick="createNote"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="bottom|end"
-    app:backgroundTint="@android:color/holo_red_dark" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_create"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginEnd="25dp"
+        android:onClick="createNote"
+        app:backgroundTint="@android:color/holo_red_dark"
+        android:src="@drawable/ic_add_white_36dp"
+        />
 
 </android.support.design.widget.CoordinatorLayout>
