@@ -57,6 +57,9 @@ public class Controller {
     public int GetRepoSize(){
         return noteRepository.getNoteListCount();
     }
+    public void SortNotes(){
+        noteRepository.sortList();
+    }
 
     public ArrayList<Note> getNoteRepoList(){
         return noteRepository.getNoteList();

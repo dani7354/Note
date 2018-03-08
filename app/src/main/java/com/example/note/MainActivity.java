@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         controller = Controller.getInstance();
+        controller.SortNotes();
         noteListView = (ListView) findViewById(R.id.note_listview);
         createNoteButton = findViewById(R.id.fab_create);
 
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+        controller.SortNotes();
         arrayAdapter.notifyDataSetChanged();
     }
 

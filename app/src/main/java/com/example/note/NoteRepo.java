@@ -1,6 +1,7 @@
 package com.example.note;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by dsp on 03/03/2018.
@@ -29,6 +30,13 @@ public class NoteRepo {
 
     public void deleteNote(Note note){
         noteList.remove(note);
+    }
+
+    public void sortList(){
+        Collections.sort(noteList);
+        Collections.reverse(noteList);
+
+
     }
 
 

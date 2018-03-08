@@ -8,33 +8,29 @@ import java.util.EmptyStackException;
  * Created by dsp on 03/03/2018.
  */
 
-public class Note {
+public class Note implements Comparable<Note>{
 
 
 
     private int id;
+    private DateFormat dateFormat;
 
-
-
+    private Date dateAndTime;
     private String text;
 
-    private String dateTime;
+    private String dateTimeString;
 
     public Note(int pId, String pText){
        id = pId;
        text = pText;
-
-
        updateDateAndTime();
-
-
 
     }
 
     private void updateDateAndTime(){
-        Date dateAndTime = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        dateTime = dateFormat.format(dateAndTime);
+        dateAndTime = new Date();
+        dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        dateTimeString = dateFormat.format(dateAndTime);
 
     }
 
@@ -51,14 +47,14 @@ public class Note {
         updateDateAndTime();
     }
 
-    public String getDateTime() {
+    public Date getDateAndTime() {
 
-        return dateTime;
+        return dateAndTime;
     }
 
     @Override
     public String toString() {
-        String returnString = dateTime + ": ";
+        String returnString = dateTimeString + ": ";
 
         if(text.length() <= 12) returnString+=text;
         else returnString += text.substring(0, 8) + "...";
@@ -67,5 +63,11 @@ public class Note {
 
 
     }
+    @Override
+    public int compareTo(Note otherNote){
+
+        return this.dateAndTime.compareTo(otherNote.getDateAndTime());
+    }
+
 
 }

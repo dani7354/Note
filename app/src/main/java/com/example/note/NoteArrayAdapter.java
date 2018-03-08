@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
  */
 
 public class NoteArrayAdapter extends ArrayAdapter<Note> {
+
+
     public NoteArrayAdapter(@NonNull Context context, int resource) {
         super(context, resource);
     }
