@@ -1,8 +1,15 @@
 package com.example.note;
+import android.content.ContentValues;
+
+import com.example.note.database.NoteTable;
+
+import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.EmptyStackException;
+import java.util.Locale;
 
 /**
  * Created by dsp on 03/03/2018.
@@ -27,10 +34,37 @@ public class Note implements Comparable<Note>{
 
     }
 
+    public Note(int id, String text, String date) {
+        this.id = id;
+        this.text = text;
+        this.dateAndTime = convertStringToDate(date);
+    }
+
     private void updateDateAndTime(){
         dateAndTime = new Date();
         dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         dateTimeString = dateFormat.format(dateAndTime);
+
+
+    }
+
+    private Date convertStringToDate(String dateString){
+
+        Date date = null;
+        DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
+
+        try{
+            date = formatter.parse(dateString);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
+
+
+
+
+        return date;
+
 
     }
 
@@ -42,9 +76,9 @@ public class Note implements Comparable<Note>{
         return text;
     }
     public void setText(String text) {
-
-        this.text = text;
         updateDateAndTime();
+        this.text = text;
+
     }
 
     public Date getDateAndTime() {
@@ -67,6 +101,16 @@ public class Note implements Comparable<Note>{
     public int compareTo(Note otherNote){
 
         return this.dateAndTime.compareTo(otherNote.getDateAndTime());
+    }
+
+    public ContentValues toValues(){
+        ContentValues values = new ContentValues();
+
+        values.put(NoteTable.COLUMN_ID, id);
+        values.put(NoteTable.COLUMN_TEXT, text);
+        values.put(NoteTable.COLUMN_DATE, dateTimeString);
+
+        return values;
     }
 
 

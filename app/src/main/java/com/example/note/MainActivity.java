@@ -2,6 +2,7 @@ package com.example.note;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.SQLException;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import com.example.note.database.*;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,11 +24,18 @@ public class MainActivity extends AppCompatActivity {
     ArrayAdapter<Note> arrayAdapter;
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        controller = Controller.getInstance();
+
+         controller = Controller.getInstance();
+
+         controller.setContext(this);
+
+
         controller.SortNotes();
         noteListView = (ListView) findViewById(R.id.note_listview);
         createNoteButton = findViewById(R.id.fab_create);
@@ -63,6 +74,18 @@ public class MainActivity extends AppCompatActivity {
         super.onRestart();
         controller.SortNotes();
         arrayAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    
     }
 
     //Opens a new activity which shows a note.

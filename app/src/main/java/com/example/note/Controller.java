@@ -1,5 +1,7 @@
 package com.example.note;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 /**
@@ -11,31 +13,32 @@ public class Controller {
 
 
     private static Controller Instance = new Controller();
-
-    private NoteRepo noteRepository;
-
-
     public static final Controller getInstance() {
         return Instance;
     }
 
+    private NoteRepo noteRepository;
+
+    private Context context;
+
     public Note CurrentNote;
+    private void createRepo(){
+
+        noteRepository = new NoteRepo(context);
+    }
 
     private Controller(){
-        noteRepository = new NoteRepo();
 
-        //For test purposes
-        CreateNote("Note 1");
-        CreateNote("Note 2");
-        CreateNote("Note 3");
+    }
+    public void setContext(Context context) {
+        this.context = context;
+        createRepo();
 
     }
 
     public void CreateNote(String noteString){
 
-
         CurrentNote = new Note(noteRepository.getNoteListCount(), noteString);
-
         noteRepository.addNote(CurrentNote);
     }
 
@@ -52,6 +55,7 @@ public class Controller {
 
     public void updateNote(String updatedText){
         CurrentNote.setText(updatedText);
+        noteRepository.updateNote(CurrentNote);
     }
 
     public int GetRepoSize(){
