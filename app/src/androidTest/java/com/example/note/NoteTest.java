@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  * Created by dsp on 03/03/2018.
  */
 public class NoteTest {
-
+    NoteRepo nr1;
     Controller controller;
     Note n1;
     Note n2;
@@ -44,11 +44,8 @@ public class NoteTest {
 
         Assert.assertEquals(3, controller.GetRepoSize());
 
-
-
-
-
     }
+
 
 
 

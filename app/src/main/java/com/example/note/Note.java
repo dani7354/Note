@@ -1,42 +1,55 @@
 package com.example.note;
+import android.content.ContentValues;
+
+import com.example.note.database.NoteTable;
+
+import java.sql.SQLException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.EmptyStackException;
+import java.util.Locale;
 
 /**
  * Created by dsp on 03/03/2018.
  */
 
-public class Note {
+public class Note implements Comparable<Note>{
 
 
 
     private int id;
+    private DateFormat dateFormat;
 
-
-
+    private Date dateAndTime;
     private String text;
 
-    private String dateTime;
+    private String dateTimeString;
 
     public Note(int pId, String pText){
        id = pId;
        text = pText;
-
-
        updateDateAndTime();
 
+    }
 
-
+    public Note(int id, String text, String date) {
+        this.id = id;
+        this.text = text;
+        this.dateTimeString = date;
     }
 
     private void updateDateAndTime(){
-        Date dateAndTime = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        dateTime = dateFormat.format(dateAndTime);
+        dateAndTime = new Date();
+        dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        dateTimeString = dateFormat.format(dateAndTime);
+
+
 
     }
+
+
 
     public int getId() {
         return id;
@@ -46,28 +59,42 @@ public class Note {
         return text;
     }
     public void setText(String text) {
-
-        this.text = text;
         updateDateAndTime();
+        this.text = text;
+
     }
 
-    public String getDateTime() {
+    public Date getDateAndTime() {
 
-        return dateTime;
+        return dateAndTime;
     }
 
     @Override
     public String toString() {
-        String returnString = dateTime + ": ";
+        String returnString = dateTimeString + ": ";
 
         if(text.length() <= 12) returnString+=text;
         else returnString += text.substring(0, 8) + "...";
-
-
 
         return returnString;
 
 
     }
+    @Override
+    public int compareTo(Note otherNote){
+
+        return this.dateTimeString.compareTo(otherNote.dateTimeString);
+    }
+
+    public ContentValues toValues(){
+        ContentValues values = new ContentValues();
+
+        values.put(NoteTable.COLUMN_ID, id);
+        values.put(NoteTable.COLUMN_TEXT, text);
+        values.put(NoteTable.COLUMN_DATE, dateTimeString);
+
+        return values;
+    }
+
 
 }

@@ -13,6 +13,7 @@ public class NoteActivity extends AppCompatActivity {
     Controller controller;
     EditText note;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,17 +21,29 @@ public class NoteActivity extends AppCompatActivity {
 
         controller = Controller.getInstance();
 
-        note = findViewById(R.id.edittext_noteinput);
-        note.setText(controller.CurrentNote.getText());
+        showNote();
+
 
 
     }
     @Override
     public void onBackPressed()
     {
-        //Toast.makeText(this, "Hellloooooooooooooo", Toast.LENGTH_SHORT);
+
         String updatedText = note.getText().toString();
         controller.updateNote(updatedText);
         finish();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        showNote();
+    }
+
+    public void showNote(){
+        note = findViewById(R.id.edittext_noteinput);
+        note.setText(controller.CurrentNote.getText());
+
     }
 }
