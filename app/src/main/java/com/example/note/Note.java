@@ -37,7 +37,7 @@ public class Note implements Comparable<Note>{
     public Note(int id, String text, String date) {
         this.id = id;
         this.text = text;
-        this.dateAndTime = convertStringToDate(date);
+        this.dateTimeString = date;
     }
 
     private void updateDateAndTime(){
@@ -46,27 +46,10 @@ public class Note implements Comparable<Note>{
         dateTimeString = dateFormat.format(dateAndTime);
 
 
-    }
-
-    private Date convertStringToDate(String dateString){
-
-        Date date = null;
-        DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss", Locale.ENGLISH);
-
-        try{
-            date = formatter.parse(dateString);
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-
-
-
-
-        return date;
-
 
     }
+
+
 
     public int getId() {
         return id;
@@ -100,7 +83,7 @@ public class Note implements Comparable<Note>{
     @Override
     public int compareTo(Note otherNote){
 
-        return this.dateAndTime.compareTo(otherNote.getDateAndTime());
+        return this.dateTimeString.compareTo(otherNote.dateTimeString);
     }
 
     public ContentValues toValues(){

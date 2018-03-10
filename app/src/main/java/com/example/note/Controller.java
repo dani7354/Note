@@ -1,17 +1,9 @@
 package com.example.note;
 
 import android.content.Context;
-
 import java.util.ArrayList;
 
-/**
- * Created by dsp on 03/03/2018.
- */
-
 public class Controller {
-
-
-
     private static Controller Instance = new Controller();
     public static final Controller getInstance() {
         return Instance;
@@ -33,7 +25,6 @@ public class Controller {
     public void setContext(Context context) {
         this.context = context;
         createRepo();
-
     }
 
     public void CreateNote(String noteString){

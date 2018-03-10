@@ -21,8 +21,6 @@ public class NoteRepo {
     private void repoInit(){
         noteList = mDataSource.loadFromDB();
         sortList();
-
-
     }
 
     public NoteRepo(Context context){
@@ -30,8 +28,6 @@ public class NoteRepo {
         mDataSource = new DataSource(context);
 
         repoInit();
-
-
     }
 
     public int getNoteListCount(){
@@ -60,9 +56,4 @@ public class NoteRepo {
         Collections.sort(noteList);
         Collections.reverse(noteList);
     }
-
-
-
-
-
 }

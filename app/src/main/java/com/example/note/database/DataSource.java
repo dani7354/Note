@@ -22,7 +22,6 @@ public class DataSource {
         this.mContext = context;
         mDbHelper = new DBHelper(mContext);
         mDatabase = mDbHelper.getWritableDatabase();
-
     }
 
     public void open(){
@@ -64,9 +63,7 @@ public class DataSource {
             Note noteFromDb = new Note(id, text, date);
 
             loadedItems.add(noteFromDb);
-
         }
-
         return loadedItems;
     }
 
