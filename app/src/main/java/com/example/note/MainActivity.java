@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ListView noteListView;
     FloatingActionButton createNoteButton;
     Controller controller;
-    ArrayAdapter<Note> arrayAdapter;
+    NoteArrayAdapter noteAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,14 +40,15 @@ public class MainActivity extends AppCompatActivity {
         noteListView = (ListView) findViewById(R.id.note_listview);
         createNoteButton = findViewById(R.id.fab_create);
 
-        arrayAdapter= new ArrayAdapter<Note>(this, R.layout.content_main, R.id.note_textView, controller.getNoteRepoList());
-        noteListView.setAdapter(arrayAdapter);
-
+       // arrayAdapter= new ArrayAdapter<Note>(this, R.layout.content_main, R.id.note_textView, controller.getNoteRepoList());
+        noteAdapter = new NoteArrayAdapter(this, controller.getNoteRepoList());
+        noteListView.setAdapter(noteAdapter);
 
         noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                controller.CurrentNote = (Note) arrayAdapter.getItem(position);
+
+                controller.CurrentNote = (Note) noteAdapter.getItem(position);
                 viewNote(view);
 
             }
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
            public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                           int position, long id) {
 
-              controller.CurrentNote = (Note) arrayAdapter.getItem(position);
+              controller.CurrentNote = (Note) noteAdapter.getItem(position);
                showConfirmDeleteDialog();
 
                return true;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         controller.SortNotes();
-        arrayAdapter.notifyDataSetChanged();
+        noteAdapter.notifyDataSetChanged();
     }
 
 
@@ -101,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         controller.removeNote();
-                        arrayAdapter.notifyDataSetChanged();
+                        noteAdapter.notifyDataSetChanged();
                         Toast deletedConfirmation = Toast.makeText(getApplicationContext(), "Note deleted!", Toast.LENGTH_SHORT);
                         deletedConfirmation.show();
                     }

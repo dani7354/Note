@@ -35,6 +35,10 @@ public class Note implements Comparable<Note>{
         return id;
     }
 
+    public String getDateTimeString(){
+        return dateTimeString;
+    }
+
     public String getText() {
         return text;
     }

@@ -34,7 +34,7 @@ public class Controller {
     }
 
     public void createNote(){
-        CurrentNote = new Note(noteRepository.getNoteListCount(), "");
+        CurrentNote = new Note(noteRepository.getNoteListCount()+1, "");
         noteRepository.addNote(CurrentNote);
 
     }
@@ -49,9 +49,6 @@ public class Controller {
         noteRepository.updateNote(CurrentNote);
     }
 
-    public int GetRepoSize(){
-        return noteRepository.getNoteListCount();
-    }
     public void SortNotes(){
         noteRepository.sortList();
     }

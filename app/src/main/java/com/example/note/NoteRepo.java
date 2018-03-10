@@ -27,7 +27,7 @@ public class NoteRepo {
     }
 
     public int getNoteListCount(){
-        return noteList.size();
+        return (int)mDataSource.getDbNotesCount();
     }
 
     public ArrayList<Note> getNoteList(){
