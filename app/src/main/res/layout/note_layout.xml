@@ -10,9 +10,9 @@
     <EditText
         android:id="@+id/edittext_noteinput"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:inputType="textMultiLine"
-        android:lines="13"
+        android:lines="30"
         android:minLines="1"
         android:gravity="top|left"
  />

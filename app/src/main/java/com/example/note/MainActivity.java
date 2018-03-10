@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.note.database.*;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton createNoteButton;
     Controller controller;
     ArrayAdapter<Note> arrayAdapter;
+
 
 
 
@@ -34,9 +36,12 @@ public class MainActivity extends AppCompatActivity {
          controller = Controller.getInstance();
 
          controller.setContext(this);
-
-
         controller.SortNotes();
+
+        Toast welcomeToast = Toast.makeText(this, "Welcome to Note!", Toast.LENGTH_SHORT);
+        welcomeToast.show();
+
+
         noteListView = (ListView) findViewById(R.id.note_listview);
         createNoteButton = findViewById(R.id.fab_create);
 
@@ -76,17 +81,6 @@ public class MainActivity extends AppCompatActivity {
         arrayAdapter.notifyDataSetChanged();
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-    
-    }
 
     //Opens a new activity which shows a note.
     public void viewNote(View v){
@@ -113,7 +107,8 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         controller.removeNote();
                         arrayAdapter.notifyDataSetChanged();
-                      //  dialog.cancel();
+                        Toast deletedConfirmation = Toast.makeText(getApplicationContext(), "Note deleted!", Toast.LENGTH_SHORT);
+                        deletedConfirmation.show();
                     }
                 });
 

@@ -1,30 +1,15 @@
 package com.example.note;
+
 import android.content.ContentValues;
-
 import com.example.note.database.NoteTable;
-
-import java.sql.SQLException;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.EmptyStackException;
-import java.util.Locale;
-
-/**
- * Created by dsp on 03/03/2018.
- */
 
 public class Note implements Comparable<Note>{
-
-
-
     private int id;
     private DateFormat dateFormat;
-
-    private Date dateAndTime;
     private String text;
-
     private String dateTimeString;
 
     public Note(int pId, String pText){
@@ -41,15 +26,10 @@ public class Note implements Comparable<Note>{
     }
 
     private void updateDateAndTime(){
-        dateAndTime = new Date();
+        Date dateAndTime = new Date();
         dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         dateTimeString = dateFormat.format(dateAndTime);
-
-
-
     }
-
-
 
     public int getId() {
         return id;
@@ -61,12 +41,6 @@ public class Note implements Comparable<Note>{
     public void setText(String text) {
         updateDateAndTime();
         this.text = text;
-
-    }
-
-    public Date getDateAndTime() {
-
-        return dateAndTime;
     }
 
     @Override
@@ -77,15 +51,12 @@ public class Note implements Comparable<Note>{
         else returnString += text.substring(0, 8) + "...";
 
         return returnString;
-
-
     }
     @Override
     public int compareTo(Note otherNote){
-
         return this.dateTimeString.compareTo(otherNote.dateTimeString);
     }
-
+    // Helper method for SQL
     public ContentValues toValues(){
         ContentValues values = new ContentValues();
 
@@ -95,6 +66,4 @@ public class Note implements Comparable<Note>{
 
         return values;
     }
-
-
 }

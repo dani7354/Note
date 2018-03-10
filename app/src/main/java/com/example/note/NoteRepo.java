@@ -7,10 +7,6 @@ import com.example.note.database.DataSource;
 import java.util.ArrayList;
 import java.util.Collections;
 
-/**
- * Created by dsp on 03/03/2018.
- */
-
 public class NoteRepo {
 
     private Context context;

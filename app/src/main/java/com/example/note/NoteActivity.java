@@ -1,11 +1,10 @@
 package com.example.note;
 
-import android.content.Intent;
-import android.support.design.widget.TextInputEditText;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
 public class NoteActivity extends AppCompatActivity {
@@ -18,13 +17,8 @@ public class NoteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.note_layout);
-
         controller = Controller.getInstance();
-
         showNote();
-
-
-
     }
     @Override
     public void onBackPressed()
@@ -32,6 +26,8 @@ public class NoteActivity extends AppCompatActivity {
 
         String updatedText = note.getText().toString();
         controller.updateNote(updatedText);
+        Toast savedMessage = Toast.makeText(getApplicationContext(), "Note saved!", Toast.LENGTH_SHORT);
+        savedMessage.show();
         finish();
     }
 

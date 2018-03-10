@@ -59,6 +59,4 @@ public class Controller {
     public ArrayList<Note> getNoteRepoList(){
         return noteRepository.getNoteList();
     }
-    
-
 }
