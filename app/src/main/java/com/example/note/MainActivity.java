@@ -23,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton createNoteButton;
     Controller controller;
     ArrayAdapter<Note> arrayAdapter;
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

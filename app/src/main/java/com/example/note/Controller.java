@@ -4,7 +4,7 @@ import android.content.Context;
 import java.util.ArrayList;
 
 public class Controller {
-    private static Controller Instance = new Controller();
+    private static final Controller Instance = new Controller();
     public static final Controller getInstance() {
         return Instance;
     }
