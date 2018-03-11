@@ -1,7 +1,7 @@
 # Note
 
 ## About the application (English)
-This, my first Android app, is a simple app for writing small notes. The notes are sorted in a list view by creation and editing date.
+This, my first Android app, is a simple app for writing small notes. The notes are sorted in a list view by creation and editing date. TYhe application works on most Android devices running Android 4.0 or newer.
 ## À propos de l'application(Français)
 Cela, ma première application Andoid, est une application simple avec laquelle on peut ecrire des petites notes et les enregistrer sur une liste. 
 Les notes sont rangées sur la liste par date de creation et modification. En plus, si on n'a plus besoin d'une de ses notes, on peut la supprimer facilement. L'application functionne sur la majorité de téléphones et tablettes Android.
