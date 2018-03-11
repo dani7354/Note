@@ -1,17 +1,11 @@
 package com.example.note.model;
 
 import android.content.Context;
-
 import com.example.note.database.DataSource;
-import com.example.note.model.Note;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class NoteRepo {
-
-    private Context context;
-
     private ArrayList<Note> noteList;
     private DataSource mDataSource;
 
@@ -21,9 +15,7 @@ public class NoteRepo {
     }
 
     public NoteRepo(Context context){
-        this.context = context;
         mDataSource = new DataSource(context);
-
         repoInit();
     }
 
