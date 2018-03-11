@@ -1,4 +1,4 @@
-package com.example.note;
+package com.example.note.activity;
 
 
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 import android.widget.Toast;
+
+import com.example.note.Controller;
+import com.example.note.R;
 
 public class NoteActivity extends AppCompatActivity {
 
@@ -16,7 +19,7 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.note_layout);
+        setContentView(R.layout.activity_note);
         controller = Controller.getInstance();
         showNote();
     }

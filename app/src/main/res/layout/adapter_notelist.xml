@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingLeft="6dip" android:minHeight="?android:attr/listPreferredItemHeight">
+
+    <TextView
+        android:id="@+id/textView_noteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+         />
+
+    <TextView
+        android:id="@+id/textView_noteDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView_noteText"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        />
+</RelativeLayout>

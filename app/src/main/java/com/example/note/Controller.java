@@ -1,6 +1,10 @@
 package com.example.note;
 
 import android.content.Context;
+
+import com.example.note.model.Note;
+import com.example.note.model.NoteRepo;
+
 import java.util.ArrayList;
 
 public class Controller {
@@ -34,7 +38,7 @@ public class Controller {
     }
 
     public void createNote(){
-        CurrentNote = new Note(noteRepository.getNoteListCount(), "");
+        CurrentNote = new Note(noteRepository.getNoteListCount()+1, "");
         noteRepository.addNote(CurrentNote);
 
     }
@@ -49,9 +53,6 @@ public class Controller {
         noteRepository.updateNote(CurrentNote);
     }
 
-    public int GetRepoSize(){
-        return noteRepository.getNoteListCount();
-    }
     public void SortNotes(){
         noteRepository.sortList();
     }

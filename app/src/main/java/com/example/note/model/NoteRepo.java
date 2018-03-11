@@ -1,16 +1,11 @@
-package com.example.note;
+package com.example.note.model;
 
 import android.content.Context;
-
 import com.example.note.database.DataSource;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class NoteRepo {
-
-    private Context context;
-
     private ArrayList<Note> noteList;
     private DataSource mDataSource;
 
@@ -20,14 +15,12 @@ public class NoteRepo {
     }
 
     public NoteRepo(Context context){
-        this.context = context;
         mDataSource = new DataSource(context);
-
         repoInit();
     }
 
     public int getNoteListCount(){
-        return noteList.size();
+        return (int)mDataSource.getDbNotesCount();
     }
 
     public ArrayList<Note> getNoteList(){
