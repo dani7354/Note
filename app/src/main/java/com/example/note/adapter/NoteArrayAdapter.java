@@ -1,14 +1,14 @@
-package com.example.note;
+package com.example.note.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.note.R;
+import com.example.note.model.Note;
 
 import java.util.ArrayList;
 

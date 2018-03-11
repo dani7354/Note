@@ -1,20 +1,21 @@
-package com.example.note;
+package com.example.note.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.SQLException;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import com.example.note.database.*;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.note.Controller;
+import com.example.note.R;
+import com.example.note.activity.NoteActivity;
+import com.example.note.adapter.NoteArrayAdapter;
+import com.example.note.model.Note;
+
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {

@@ -1,4 +1,4 @@
-package com.example.note;
+package com.example.note.model;
 
 import android.content.ContentValues;
 import com.example.note.database.NoteTable;
@@ -16,7 +16,6 @@ public class Note implements Comparable<Note>{
        id = pId;
        text = pText;
        updateDateAndTime();
-
     }
 
     public Note(int id, String text, String date) {

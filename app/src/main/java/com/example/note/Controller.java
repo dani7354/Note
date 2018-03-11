@@ -1,6 +1,10 @@
 package com.example.note;
 
 import android.content.Context;
+
+import com.example.note.model.Note;
+import com.example.note.model.NoteRepo;
+
 import java.util.ArrayList;
 
 public class Controller {

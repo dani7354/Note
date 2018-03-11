@@ -1,8 +1,9 @@
-package com.example.note;
+package com.example.note.model;
 
 import android.content.Context;
 
 import com.example.note.database.DataSource;
+import com.example.note.model.Note;
 
 import java.util.ArrayList;
 import java.util.Collections;
