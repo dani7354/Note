@@ -32,23 +32,25 @@ public class DataSource {
         mDatabase.close();
     }
 
-    public Note createNote(Note note){
+    public void createNote(Note note){
         ContentValues values = note.toValues();
+        open();
         mDatabase.insert(NoteTable.TABLE_NOTE, null, values);
-        return note;
+        close();
+
     }
 
-    public Note deleteNote(Note note){
-
+    public void deleteNote(Note note){
+        open();
         mDatabase.delete(NoteTable.TABLE_NOTE, NoteTable.COLUMN_ID + "=" +note.getId(), null );
-        return note;
-
+        close();
     }
 
-    public Note updateNote(Note note){
+    public void updateNote(Note note){
         ContentValues values = note.toValues();
+        open();
         mDatabase.update(NoteTable.TABLE_NOTE, values, NoteTable.COLUMN_ID + "=" + note.getId(), null);
-        return note;
+        close();
     }
 
     public ArrayList<Note> loadFromDB(){

@@ -26,8 +26,8 @@ public class NoteArrayAdapter extends ArrayAdapter<Note> {
         if(convertView == null){
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.adapter_notelist, parent, false);
         }
-        TextView noteText = (TextView) convertView.findViewById(R.id.textView_noteText);
-        TextView noteDate = (TextView) convertView.findViewById(R.id.textView_noteDate);
+        TextView noteText = convertView.findViewById(R.id.textView_noteText);
+        TextView noteDate = convertView.findViewById(R.id.textView_noteDate);
 
         noteText.setText(note.getText());
         noteDate.setText(note.getDateTimeString());
