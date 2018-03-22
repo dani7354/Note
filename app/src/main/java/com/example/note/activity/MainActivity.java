@@ -2,6 +2,7 @@ package com.example.note.activity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +10,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-
 import com.example.note.Controller;
 import com.example.note.R;
-import com.example.note.activity.NoteActivity;
 import com.example.note.adapter.NoteArrayAdapter;
 import com.example.note.model.Note;
 
+
+import android.widget.SearchView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +25,11 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton createNoteButton;
     Controller controller;
     NoteArrayAdapter noteAdapter;
+    android.support.v7.widget.SearchView noteSearchView;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
         noteListView = (ListView) findViewById(R.id.note_listview);
         createNoteButton = findViewById(R.id.fab_create);
-
-       // arrayAdapter= new ArrayAdapter<Note>(this, R.layout.content_main, R.id.note_textView, controller.getNoteRepoList());
         noteAdapter = new NoteArrayAdapter(this, controller.getNoteRepoList());
-        noteListView.setAdapter(noteAdapter);
 
+        noteListView.setAdapter(noteAdapter);
+        noteSearchView = findViewById(R.id.note_searchview);
         noteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
@@ -55,6 +60,22 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
+      noteSearchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
+          @Override
+          public boolean onQueryTextSubmit(String query) {
+              return false;
+          }
+
+          @Override
+          public boolean onQueryTextChange(String newText) {
+              noteAdapter.getFilter().filter(newText);
+              noteAdapter.notifyDataSetChanged();
+
+              return false;
+          }
+      });
+
 
 
         // Item long click to opn dialog for deletion
